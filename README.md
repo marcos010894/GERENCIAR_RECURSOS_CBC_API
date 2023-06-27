@@ -21,7 +21,13 @@ Se você estiver testando localmente, certifique-se de que o servidor Apache est
 
 ## Configuração do Banco de Dados
 
+Você deve importar o arquivo gerenciar_recursos.sql para o gerenciador de banco de dados que você estará utilizando.
+
+## Configurar conexão
+
 As configurações do banco de dados podem ser alteradas no arquivo `config.php`.
+Certifique-se de inserir as configurações corretas do seu banco de dados
+
 
 ## Instalação
 
