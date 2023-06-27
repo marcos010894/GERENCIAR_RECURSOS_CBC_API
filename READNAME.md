@@ -39,6 +39,12 @@ Os endpoints da API podem ser acessados na URL public_html/api/{endpointAqui}.
 [/clube]
 [/recurso]
 
+ocumentação](http://gerenciar-recursos-cb-capi-18d9d6e277a4.herokuapp.com/docs.php)
+
 # Lembrete
 
 Ao acessar os endpoints, substitua {endpointAqui} pelo endpoint desejado.
+
+# Documentação
+
+[Link para Documentação](http://gerenciar-recursos-cb-capi-18d9d6e277a4.herokuapp.com/docs.php)
