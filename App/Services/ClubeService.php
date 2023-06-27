@@ -10,7 +10,7 @@ class ClubeService
     {
         // return $id;
         if ($id) {
-            return Clube::get($id);
+            return Clube::get_id($id);
         } else {
             return Clube::get();
         }
@@ -18,5 +18,6 @@ class ClubeService
 
     public function post($dados)
     {
+        return Clube::post($dados);;
     }
 }
