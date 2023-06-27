@@ -19,15 +19,13 @@ Se você estiver testando localmente, certifique-se de que o servidor Apache est
 - PHP versão 8.0.25 ou superior
 - Servidor MySQL versão 8.0.26 ou superior
 
-## Configuração do Banco de Dados
+## Importação da Base de Dados
 
-Você deve importar o arquivo gerenciar_recursos.sql para o gerenciador de banco de dados que você estará utilizando.
+Para iniciar, é necessário importar o arquivo `gerenciar_recursos.sql` para o sistema de gerenciamento de banco de dados de sua escolha. Este arquivo contém as tabelas e dados iniciais necessários para o correto funcionamento da API.
 
-## Configurar conexão
+## Configuração da Conexão com o Banco de Dados
 
-As configurações do banco de dados podem ser alteradas no arquivo `config.php`.
-Certifique-se de inserir as configurações corretas do seu banco de dados
-
+As credenciais de conexão com o banco de dados podem ser configuradas no arquivo `config.php`. É de extrema importância que você insira as informações corretas correspondentes ao seu ambiente de banco de dados (nome do host, nome do banco de dados, usuário e senha), para assegurar uma conexão bem-sucedida e o funcionamento adequado da API.
 
 ## Instalação
 
