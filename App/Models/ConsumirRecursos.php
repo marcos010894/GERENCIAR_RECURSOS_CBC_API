@@ -17,12 +17,26 @@ class ConsumirRecursos
 
     public static function consumir($dados)
     {
-
         self::$dadosClube = Clube::get_id($dados['clube_id']);
         self::$dadosRecurso = Recurso::get_id($dados['recurso_id']);
+
+        if (isset(self::$dadosClube['status']) || isset(self::$dadosRecurso['status'])) {
+            http_response_code(409);
+            return  array('status' => 409, 'error' => 'Erro ao obter os dados do clube ou recurso. verifique se os ids estão corretos ');
+        }
         $valorCalculado = self::subtrair_recursos($dados['valor_consumo']);
 
+        switch ($valorCalculado) {
+            case 0:
+                http_response_code(409);
+                return array('status' => 409, 'error' => 'O saldo disponível do clube é insuficiente.');
 
+            case 3:
+                http_response_code(409);
+                return array('status' => 409, 'error' => 'O saldo disponível do Recurso é insuficiente.');
+            default:
+                //ok;
+        }
         $responseAtt = self::ataulizarInformacoes($dados);
         if ($responseAtt) {
             $dadosTratados = [
@@ -62,19 +76,18 @@ class ConsumirRecursos
         $valorConsumo = str_replace(',', '.', $valorConsumo);
         $consumo = round(floatval($valorConsumo), 2);
 
-        // Use o operador lógico correto "&&" em vez de "&"
         if ($valorRecursos >= $consumo && $valorClubes >= $consumo) {
             $valorClubeAtualizadoDecimal = number_format($valorClubes - $consumo, 2);
             $valorRecursoAtualizadoDecimal = number_format($valorRecursos - $consumo, 2);
             $valorClubeAtualizado = number_format($valorClubes - $consumo, 2);
             self::$valorClubeAtualizado =  str_replace(',', '', $valorClubeAtualizadoDecimal);
             self::$valorRecursoAtualizado =  str_replace(',', '', $valorRecursoAtualizadoDecimal);
-            return floatval($valorClubeAtualizado);
+            return strval($valorClubeAtualizado);
         } else {
             if ($valorRecursos < $consumo) {
-                return 'Recursos indisponíveis.';
+                return 3;
             } elseif ($valorClubes < $consumo) {
-                return 'O saldo disponível do clube é insuficiente.';
+                return 0;
             }
         }
     }

@@ -34,13 +34,10 @@ if ($url[0] === 'api') {
 
     $service = 'App\Services\\' . ucfirst($url[0]) . 'Service';
 
-    $service2 = new   App\Services\ClubeService;
-
     try {
         if ($method === 'post') {
 
             $responsePost = call_user_func_array(array(new $service, $method), [$dados_json]);
-
             echo json_encode($responsePost);
         } else if ($method === 'get') {
             array_shift($url);
