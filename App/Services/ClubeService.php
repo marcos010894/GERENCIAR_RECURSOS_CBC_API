@@ -16,8 +16,13 @@ class ClubeService
         }
     }
 
-    public function post($dados)
+    public function post(array $dados)
     {
+
+        if (!isset($dados['clube'], $dados['saldo_disponivel'])) {
+            http_response_code(400);
+            return array('status' => 400, 'error' => 'Erro Dados Invalidos.');
+        }
         return Clube::post($dados);;
     }
 }

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+    phpinfo();
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,6 +18,10 @@
             background-color: black;
             color: white;
         }
+
+        .post {
+            color: brown;
+        }
     </style>
 </head>
 
@@ -25,8 +31,10 @@
             <h1>Endpoints</h1>
         </div>
         <div>
-            <div >
-                <h3>/Clubes</h3>
+            <div>
+                <h2>Clube</h2>
+                <h4>URL: {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/</h4>
+                <h3>ENDPOINT: /clube</h3>
                 <br>
             </div>
 
@@ -34,37 +42,32 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <span class="get"> METHOD GET </span> - ENDPOINT - /clubes
+                            <span class="get"> METHOD GET </span> - ENDPOINT - {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/clube
                         </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <strong>suaurl/clubes.</strong><br> retorna todos os clubes regitrados.
+                            <strong></strong><br> retorna todos os clube regitrados.
                             <div>
                                 <h6>status: 200</h6>
                                 <br>
                                 <pre>
                                 <code>
-                                [
-                                        {
-                                        "id":"1",
-                                        "clube":"Clube A",
-                                        "saldo_disponivel":"2000,00"
-                                        },
-                                        {
-                                        "id":"2",
-                                        "clube":"Clube B",
-                                        "saldo_disponivel":"3000,00"
-                                        }
-                                ]
+[
+    {
+    "id":"string",
+    "clube":"string",
+    "saldo_disponivel":"string"
+    }
+]
                                 </code>
                             </pre>
                                 <br>
-                                <h6>status: 400</h6>
+                                <h6>status: 404</h6>
                                 <br>
                                 <pre>
                                 <code>
-                                {"status": 400, "mensagem": "nenhum usuario encontrado"}
+                                {"status": 404, "mensagem": "nenhum clube encontrado"}
                                 </code>
                             </pre>
                                 <br>
@@ -76,22 +79,22 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <span class="get"> METHOD GET </span> - ENDPOINT - /clubes/{seuid}
+                            <span class="get"> METHOD GET </span> - ENDPOINT - {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/clube/{seuid}
                         </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <strong>suaurl/clubes.</strong><br> retorna um unico usuario de acordo com o id.
+                            <strong></strong><br> retorna um unico clube de acordo com o id.
                             <div>
                                 <h6>status: 200</h6>
                                 <br>
                                 <pre>
                                 <code>
-                                {
-                                        "id":"1",
-                                        "clube":"Clube A",
-                                        "saldo_disponivel":"2000,00"
-                                }
+{
+    "id":"1",
+    "clube":"Clube A",
+    "saldo_disponivel":"2000,00"
+}
                                 </code>
                             </pre>
                                 <br>
@@ -99,7 +102,7 @@
                                 <br>
                                 <pre>
                                 <code>
-                                {"status": 400, "mensagem": "nenhum usuario encontrado"}
+                                {"status": 400, "mensagem": "nenhum clube encontrado"}
                                 </code>
                             </pre>
                                 <br>
@@ -109,15 +112,114 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Accordion Item #3
+                                <span class="POST"> METHOD POST </span> - ENDPOINT - {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/clube
+
                             </button>
                         </h2>
                         <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                <strong>clube.</strong><br> Recebe um json.
+                                <h6>Formato esperado:</h6>
+                                <pre>
+                                <code>
+                                
+{
+    "clube":"string",
+    "saldo_disponivel":"string"
+}
+                                
+                                </code>
+                            </pre>
+                                <div>
+                                    <h6>RESPOSTA status: 200</h6>
+                                    <br>
+                                    <pre>
+                                <code>
+                                
+    {
+        "status": 200,
+        "mensagem": "Sucesso"
+    }
+                                    
+                                </code>
+                            </pre>
+                                    <br>
+                                    <h6>status: 400</h6>
+                                    <br>
+                                    <pre>
+                                <code>
+                                {"status": 400, "mensagem": "Erro ao inserir clube"}
+                                </code>
+                            </pre>
+                                    <br>
+                                </div>
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+
+            <div>
+                <div style="margin-top: 150px;">
+                    <h2>Recurso</h2>
+                    <h4>URL: {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/</h4>
+                    <h3>ENDPOINT: /recurso</h3>
+                    <br>
+                </div>
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                <span class="post"> METHOD POST </span> - ENDPOINT - {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/recurso
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <strong></strong><br> Consome os recursos de acordo.
+                                <strong>clube.</strong><br> Recebe um json.
+                                <h6>Formato esperado:</h6>
+                                <pre>
+                                <code>
+                                
+{
+    "clube_id":"1",
+    "recurso_id":"1",
+    "valor_consumo":"500,00"
+}
+                                
+                                </code>
+                            </pre>
+                                <div>
+                                    <h6>status: 200</h6>
+                                    <br>
+                                    <pre>
+                                <code>
+{
+    "clube": "CLUBE A",
+    "saldo_anterior": "1222.00",
+    "saldo_atual": "821.36"
+}
+                                </code>
+                            </pre>
+                                    <br>
+                                    <h6>status: 404</h6>
+                                    <br>
+                                    <pre>
+                                <code>
+{
+    "status": 400,
+    "error": "O saldo disponível do clube é insuficiente."
+}
+                                </code>
+                            </pre>
+                                    <br>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
