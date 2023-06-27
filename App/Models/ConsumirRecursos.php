@@ -27,13 +27,13 @@ class ConsumirRecursos
         $valorCalculado = self::subtrair_recursos($dados['valor_consumo']);
 
         switch ($valorCalculado) {
-            case 0:
-                http_response_code(409);
-                return array('status' => 409, 'error' => 'O saldo disponível do clube é insuficiente.');
+            case 2:
+                http_response_code(400);
+                return array('status' => 400, 'error' => 'O saldo disponível do clube é insuficiente.');
 
             case 3:
-                http_response_code(409);
-                return array('status' => 409, 'error' => 'O saldo disponível do Recurso é insuficiente.');
+                http_response_code(400);
+                return array('status' => 400, 'error' => 'O saldo disponível do Recurso é insuficiente.');
             default:
                 //ok;
         }
@@ -81,10 +81,9 @@ class ConsumirRecursos
     {
 
         $valorRecursos = round(floatval(self::$dadosRecurso['saldo_disponivel']), 2);
-        $valorClubes = round(floatval(self::$dadosClube['saldo_disponivel']), 2);
+        $valorClubes = str_replace(',', '.', round(floatval(self::$dadosClube['saldo_disponivel']), 2));
         $valorConsumo = str_replace(',', '.', $valorConsumo);
         $consumo = round(floatval($valorConsumo), 2);
-
         if ($valorRecursos >= $consumo && $valorClubes >= $consumo) {
             $valorClubeAtualizadoDecimal = number_format($valorClubes - $consumo, 2);
             $valorRecursoAtualizadoDecimal = number_format($valorRecursos - $consumo, 2);
@@ -96,7 +95,7 @@ class ConsumirRecursos
             if ($valorRecursos < $consumo) {
                 return 3;
             } elseif ($valorClubes < $consumo) {
-                return 0;
+                return 2;
             }
         }
     }
