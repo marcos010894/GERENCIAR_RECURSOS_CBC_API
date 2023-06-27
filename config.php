@@ -1,6 +1,7 @@
 <?php
     //MYSQL ALTERE CONFORME SEUS DADOS
-    const DB = 'mysql';
+    const DBDRIVER = 'mysql';
     const HOST = 'localhost';
-    const DBNAME = 'root';
-    const PASS = '';
+    const DBNAME = 'gerenciar_recursos';
+    const DBUSER = 'root';
+    const DBPASS = '';

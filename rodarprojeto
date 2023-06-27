@@ -1,2 +1,8 @@
+Se você estiver testando localmente, certifique-se de que o servidor Apache
+está configurado para permitir o uso de arquivos .htaccess. Isso é controlado
+ pela diretiva AllowOverride no arquivo de configuração do Apache (httpd.conf), que 
+precisa ser definido como All ou FileInfo para permitir o uso do
+ mod_rewrite em um arquivo .htaccess.
+
 Cerifiquese de ter o composer instalado
 composer update
