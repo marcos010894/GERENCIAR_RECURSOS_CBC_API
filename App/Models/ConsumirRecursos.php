@@ -37,7 +37,7 @@ class ConsumirRecursos
             default:
                 //ok;
         }
-        $responseAtt = self::ataulizarInformacoes($dados);
+        $responseAtt = self::atualizarInformacoes($dados);
         if ($responseAtt) {
             $dadosTratados = [
                 "clube" => self::$dadosClube['nome_clube'],
@@ -51,15 +51,24 @@ class ConsumirRecursos
         }
     }
 
-    private static function ataulizarInformacoes($dados)
+    private static function atualizarInformacoes($dados)
     {
         $connPdo = new \PDO(DBDRIVER . ':host=' . HOST . ';dbname=' . DBNAME, DBUSER, DBPASS);
         try {
             $connPdo->beginTransaction();
 
-            // Executa várias consultas SQL
-            $connPdo->exec("UPDATE " . self::$tableClubes . " SET saldo_disponivel = " . self::$valorClubeAtualizado . "  WHERE id =" . $dados['clube_id']);
-            $connPdo->exec("UPDATE " . self::$tableRecursos . " SET saldo_disponivel = " . self::$valorRecursoAtualizado . "  WHERE id = " . $dados['recurso_id']);
+            $sqlClubes = "UPDATE " . self::$tableClubes . " SET saldo_disponivel = :valor WHERE id = :id";
+            $stmtClubes = $connPdo->prepare($sqlClubes);
+            $stmtClubes->bindValue(':valor', self::$valorClubeAtualizado);
+            $stmtClubes->bindValue(':id', $dados['clube_id']);
+            $stmtClubes->execute();
+
+            $sqlRecursos = "UPDATE " . self::$tableRecursos . " SET saldo_disponivel = :valor WHERE id = :id";
+            $stmtRecursos = $connPdo->prepare($sqlRecursos);
+            $stmtRecursos->bindValue(':valor', self::$valorRecursoAtualizado);
+            $stmtRecursos->bindValue(':id', $dados['recurso_id']);
+            $stmtRecursos->execute();
+
 
             return $connPdo->commit();
         } catch (\Exception $e) {
