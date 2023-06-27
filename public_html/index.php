@@ -1,13 +1,20 @@
 <?php
 require_once '../vendor/autoload.php';
 
+date_default_timezone_set("America/Sao_Paulo");
+
+header("Content-type: application/json");
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, POST');
+header("Access-Control-Allow-Headers: Content-Type");
+
+
+
 $method = strtolower($_SERVER['REQUEST_METHOD']);
 
 if ($method === 'post') {
-    // Obtenha os dados POST brutos
     $input = file_get_contents('php://input');
 
-    // Converte JSON em um array PHP
     $data = json_decode($input, true);
 
     if (json_last_error() != JSON_ERROR_NONE) {

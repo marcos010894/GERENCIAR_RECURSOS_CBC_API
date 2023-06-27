@@ -68,7 +68,7 @@ class Clube
             return array('status' => 200, 'mensagem' => 'Sucesso');
         } catch (\Exception $e) {
             http_response_code(400);
-            return array('status' => 400, 'error' => $e, 'mensagem' => 'Erro ao Puxar dados');
+            return array('status' => 400, 'error' => $e, 'mensagem' => 'Erro ao Inserir dados');
         }
     }
 
