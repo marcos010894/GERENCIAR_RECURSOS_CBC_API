@@ -3,29 +3,39 @@ require_once '../vendor/autoload.php';
 
 date_default_timezone_set("America/Sao_Paulo");
 
-header("Content-type: application/json");
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: GET, POST');
-header("Access-Control-Allow-Headers: Content-Type");
+function set_http_headers()
+{
+    header("Content-type: application/json");
+    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Methods: GET, POST');
+    header("Access-Control-Allow-Headers: Content-Type");
+}
 
+function send_error($status, $message)
+{
+    http_response_code($status);
+    echo json_encode(array('status' => $status, 'error' => $message));
+    exit;
+}
 
+set_http_headers();
 
 $method = strtolower($_SERVER['REQUEST_METHOD']);
 
+$url = isset($_GET['url']) ? explode('/', $_GET['url']) : array();
+
+$dados_json = null;
 if ($method === 'post') {
     $input = file_get_contents('php://input');
-
     $data = json_decode($input, true);
 
-    if (json_last_error() != JSON_ERROR_NONE) {
-        echo 'Erro na decodificação do JSON: ' . json_last_error_msg();
-        exit;
+    if (json_last_error() !== JSON_ERROR_NONE) {
+        send_error(400, 'Erro na decodificação do JSON: ' . json_last_error_msg());
     }
 
     $dados_json =  $data;
-    $url = explode('/', $_GET['url']);
-} else if ($method === 'get') {
-    $url = explode('/', $_GET['url']);
+} else if ($method !== 'get') {
+    send_error(405, 'Método HTTP não suportado');
 }
 
 if ($url[0] === 'api') {
@@ -35,16 +45,15 @@ if ($url[0] === 'api') {
     $service = 'App\Services\\' . ucfirst($url[0]) . 'Service';
 
     try {
+        $response = null;
         if ($method === 'post') {
-
-            $responsePost = call_user_func_array(array(new $service, $method), [$dados_json]);
-            echo json_encode($responsePost);
+            $response = call_user_func_array(array(new $service, $method), [$dados_json]);
         } else if ($method === 'get') {
             array_shift($url);
-
-            $responseGET = call_user_func_array(array(new $service, $method), $url);
-            echo json_encode($responseGET);
+            $response = call_user_func_array(array(new $service, $method), $url);
         }
+        echo json_encode($response);
     } catch (\Exception $e) {
+        send_error(500, 'Erro inesperado!');
     }
 }
