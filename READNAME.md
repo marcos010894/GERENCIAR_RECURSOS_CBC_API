@@ -3,10 +3,12 @@
 ## Acessando a API
 
 Você pode acessar a API através da seguinte URL: [Link para API](http://gerenciar-recursos-cb-capi-18d9d6e277a4.herokuapp.com/public_html/api/)
+http://gerenciar-recursos-cb-capi-18d9d6e277a4.herokuapp.com/public_html/api/
 
 ## Documentação
 
 A documentação da API se encontra no arquivo `docs.php` ou pode ser acessada pela seguinte URL: [Link para Documentação](http://gerenciar-recursos-cb-capi-18d9d6e277a4.herokuapp.com/docs.php)
+http://gerenciar-recursos-cb-capi-18d9d6e277a4.herokuapp.com/docs.php
 
 ## Configuração Local
 
@@ -36,10 +38,6 @@ Depois do comando acima, o projeto estará pronto para rodar no servidor de sua 
 ## Endpoints da API
 
 Os endpoints da API podem ser acessados na URL public_html/api/{endpointAqui}.
-[/clube]
-[/recurso]
-
-ocumentação](http://gerenciar-recursos-cb-capi-18d9d6e277a4.herokuapp.com/docs.php)
 
 # Lembrete
 
