@@ -4,5 +4,8 @@ está configurado para permitir o uso de arquivos .htaccess. Isso é controlado
 precisa ser definido como All ou FileInfo para permitir o uso do
  mod_rewrite em um arquivo .htaccess.
 
+ PHP Version 8.0.25
+ 
+
 Cerifiquese de ter o composer instalado
 composer update
