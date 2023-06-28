@@ -1,7 +1,12 @@
 {
+    "authors": [
+        {
+            "name": "Marcos Paulo Machado Azevedo"
+        }
+    ],
     "autoload": {
         "psr-4": {
-            "App\\": "App"
+            "App\\": "App/"
         },
         "files": [
             "config.php"
