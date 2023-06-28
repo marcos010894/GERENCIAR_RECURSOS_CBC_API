@@ -40,7 +40,7 @@ class ConsumirRecursos
             $dadosTratados = [
                 "clube" => self::$dadosClube['nome_clube'],
                 "saldo_anterior" => self::$dadosClube['saldo_disponivel'],
-                "saldo_atual" => $valorCalculado,
+                "saldo_atual" => str_replace('.', ',', $valorCalculado),
             ];
             return $dadosTratados;
         } else {
