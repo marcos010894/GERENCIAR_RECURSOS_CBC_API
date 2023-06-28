@@ -45,7 +45,6 @@ if ($url[0] === 'api') {
     $service = 'App\Services\\' . ucfirst($url[0]) . 'Service';
 
     try {
-        $response = null;
         if ($method === 'post') {
             $response = call_user_func_array(array(new $service, $method), [$dados_json]);
         } else if ($method === 'get') {
