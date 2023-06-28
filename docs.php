@@ -31,7 +31,7 @@
         <div>
             <div>
                 <h2>Clube</h2>
-                <h4>URL: {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/</h4>
+                <h4>URL: {SEULOCAL}/public_html/api/</h4>
                 <h3>ENDPOINT: /clube</h3>
                 <br>
             </div>
@@ -40,7 +40,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <span class="get"> METHOD GET </span> - ENDPOINT - {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/clube
+                            <span class="get"> METHOD GET </span> - ENDPOINT - {SEULOCAL}/public_html/api/clube
                         </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -77,7 +77,7 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            <span class="get"> METHOD GET </span> - ENDPOINT - {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/clube/{seuid}
+                            <span class="get"> METHOD GET </span> - ENDPOINT - {SEULOCAL}/public_html/api/clube/{seuid}
                         </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -110,7 +110,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                <span class="POST"> METHOD POST </span> - ENDPOINT - {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/clube
+                                <span class="POST"> METHOD POST </span> - ENDPOINT - {SEULOCAL}/public_html/api/clube
 
                             </button>
                         </h2>
@@ -163,7 +163,7 @@
             <div>
                 <div style="margin-top: 150px;">
                     <h2>Recurso</h2>
-                    <h4>URL: {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/</h4>
+                    <h4>URL: {SEULOCAL}/public_html/api/</h4>
                     <h3>ENDPOINT: /recurso</h3>
                     <br>
                 </div>
@@ -171,7 +171,7 @@
                     <div class="accordion-item">
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
-                                <span class="post"> METHOD POST </span> - ENDPOINT - {SEULOCAL}/GERENCIAR_RECURSOS_CBC_API/public_html/api/recurso
+                                <span class="post"> METHOD POST </span> - ENDPOINT - {SEULOCAL}/public_html/api/recurso
                             </button>
                         </h2>
                         <div id="collapseFour" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
