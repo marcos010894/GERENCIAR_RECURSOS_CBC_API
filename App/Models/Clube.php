@@ -63,7 +63,7 @@ class Clube
             $stmt = $connPdo->prepare($sql);
             $result = $stmt->execute([
                 'nome_clube' => $dados['clube'],
-                'saldo_disponivel' => $dados['saldo_disponivel']
+                'saldo_disponivel' => str_replace(',', '.', $dados['saldo_disponivel'])
             ]);
             return array('status' => 200, 'mensagem' => 'Sucesso');
         } catch (\Exception $e) {
