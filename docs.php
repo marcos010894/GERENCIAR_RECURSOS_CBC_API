@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -52,9 +53,9 @@
                                 <code>
 [
     {
-    "id":"string",
-    "clube":"string",
-    "saldo_disponivel":"string"
+    "id":"1",
+    "clube":"Clube 2",
+    "saldo_disponivel":"500.00"
     }
 ]
                                 </code>
@@ -88,7 +89,7 @@
                                 <pre>
                                 <code>
 {
-    "id":"1",
+    "id":"2",
     "clube":"Clube A",
     "saldo_disponivel":"2000,00"
 }
@@ -121,8 +122,10 @@
                                 <code>
                                 
 {
-    "clube":"string",
-    "saldo_disponivel":"string"
+
+"clube":"clube 2",
+"saldo_disponivel":"500.00"
+
 }
                                 
                                 </code>
