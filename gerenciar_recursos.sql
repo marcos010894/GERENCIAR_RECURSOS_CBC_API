@@ -29,11 +29,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `clubes` (
-  `id` int NOT NULL,
-  `nome_clube` varchar(255) DEFAULT NULL,
-  `saldo_disponivel` decimal(10,2) DEFAULT NULL
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome_clube` varchar(255) NOT NULL,
+  `saldo_disponivel` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
-
 -- --------------------------------------------------------
 
 --
@@ -41,9 +41,10 @@ CREATE TABLE `clubes` (
 --
 
 CREATE TABLE `recursos` (
-  `id` int NOT NULL,
-  `nome_recurso` varchar(255) DEFAULT NULL,
-  `saldo_disponivel` decimal(10,2) DEFAULT NULL
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome_recurso` varchar(255) NOT NULL,
+  `saldo_disponivel` decimal(10,2) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
