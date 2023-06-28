@@ -1,6 +1,6 @@
 <?php
 
-namespace App\models;
+namespace App\Models;
 
 class Clube
 {
@@ -26,7 +26,7 @@ class Clube
         }
     }
 
-    public static function get_id(int $id = null)
+    public static function get_id(int $id)
     {
         $connPdo = new \PDO(DBDRIVER . ':host=' . HOST . ';dbname=' . DBNAME, DBUSER, DBPASS);
         try {

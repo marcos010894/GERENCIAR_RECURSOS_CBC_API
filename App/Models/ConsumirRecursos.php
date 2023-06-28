@@ -1,6 +1,6 @@
 <?php
 
-namespace App\models;
+namespace App\Models;
 
 class ConsumirRecursos
 {
@@ -32,20 +32,20 @@ class ConsumirRecursos
                 http_response_code(400);
                 return array('status' => 400, 'error' => 'O saldo disponível do Recurso é insuficiente.');
             default:
-               return 'duncionou';
+                //ok;
         }
-        // $responseAtt = self::atualizarInformacoes($dados);
-        // if ($responseAtt) {
-        //     $dadosTratados = [
-        //         "clube" => self::$dadosClube['nome_clube'],
-        //         "saldo_anterior" => self::$dadosClube['saldo_disponivel'],
-        //         "saldo_atual" => $valorCalculado,
-        //     ];
-        //     return $dadosTratados;
-        // } else {
-        //     http_response_code(400);
-        //     return array('status' => 400, 'error' => 'Erro ao atualizar Saldo');
-        // }
+        $responseAtt = self::atualizarInformacoes($dados);
+        if ($responseAtt) {
+            $dadosTratados = [
+                "clube" => self::$dadosClube['nome_clube'],
+                "saldo_anterior" => self::$dadosClube['saldo_disponivel'],
+                "saldo_atual" => $valorCalculado,
+            ];
+            return $dadosTratados;
+        } else {
+            http_response_code(400);
+            return array('status' => 400, 'error' => 'Erro ao atualizar Saldo');
+        }
     }
 
     private static function atualizarInformacoes($dados)
