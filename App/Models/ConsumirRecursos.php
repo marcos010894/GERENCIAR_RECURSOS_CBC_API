@@ -14,10 +14,38 @@ class ConsumirRecursos
 
     public static function consumir($dados)
     {
-       
-            http_response_code(400);
-            return array('status' => 400, 'error' => 'Erro ao atualizar Saldo');
-        
+        self::$dadosClube = Clube::get_id($dados['clube_id']);
+        self::$dadosRecurso = Recurso::get_id($dados['recurso_id']);
+
+        if (isset(self::$dadosClube['status']) || isset(self::$dadosRecurso['status'])) {
+            http_response_code(409);
+            return  array('status' => 409, 'error' => 'Erro ao obter os dados do clube ou recurso. verifique se os ids estão corretos ');
+        }
+        $valorCalculado = self::subtrair_recursos($dados['valor_consumo']);
+
+        switch ($valorCalculado) {
+            case 2:
+                http_response_code(400);
+                return array('status' => 400, 'error' => 'O saldo disponível do clube é insuficiente.');
+
+            case 3:
+                http_response_code(400);
+                return array('status' => 400, 'error' => 'O saldo disponível do Recurso é insuficiente.');
+            default:
+               return 'duncionou';
+        }
+        // $responseAtt = self::atualizarInformacoes($dados);
+        // if ($responseAtt) {
+        //     $dadosTratados = [
+        //         "clube" => self::$dadosClube['nome_clube'],
+        //         "saldo_anterior" => self::$dadosClube['saldo_disponivel'],
+        //         "saldo_atual" => $valorCalculado,
+        //     ];
+        //     return $dadosTratados;
+        // } else {
+        //     http_response_code(400);
+        //     return array('status' => 400, 'error' => 'Erro ao atualizar Saldo');
+        // }
     }
 
     private static function atualizarInformacoes($dados)
