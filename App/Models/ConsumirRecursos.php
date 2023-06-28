@@ -1,9 +1,7 @@
 <?php
 
-namespace App\models;
+namespace App\Models;
 
-use App\models\Clube;
-use App\models\Recurso;
 
 class ConsumirRecursos
 {
