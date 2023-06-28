@@ -10,7 +10,7 @@ class Clube
     {
         $connPdo = new \PDO(DBDRIVER . ':host=' . HOST . ';dbname=' . DBNAME, DBUSER, DBPASS);
         try {
-            $sql = 'SELECT * FROM ' . self::$table;
+            $sql = 'SELECT id, nome_clube, REPLACE(saldo_disponivel, ".", ",") AS saldo_disponivel FROM ' . self::$table;
             $stmt = $connPdo->prepare($sql);
             $stmt->execute();
 
@@ -32,7 +32,7 @@ class Clube
         try {
 
             if ($id) {
-                $sql = 'SELECT * FROM ' . self::$table . ' WHERE id = :id';
+                $sql = 'SELECT id, nome_clube, REPLACE(saldo_disponivel, ".", ",") AS saldo_disponivel  FROM ' . self::$table . ' WHERE id = :id';
                 $stmt = $connPdo->prepare($sql);
                 $stmt->bindValue(':id', $id);
                 $stmt->execute();
