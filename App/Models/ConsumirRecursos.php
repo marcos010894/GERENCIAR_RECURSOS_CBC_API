@@ -2,6 +2,8 @@
 
 namespace App\models;
 
+use App\models\Clube;
+use App\models\Recurso;
 
 class ConsumirRecursos
 {
